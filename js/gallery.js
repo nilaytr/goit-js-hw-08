@@ -66,18 +66,17 @@ const images = [
 
 const galleryContainer = document.querySelector('.gallery');
 
-const galleryItems = images.map(({ preview, original, description }) => {
+const galleryItems = images.map((image)) => {
     return `<li class="gallery-item">
-    <a class="gallery-link" href="large-image.jpg">
+  <a class="gallery-link" href="large-image.jpg">
     <img
       class="gallery-image"
-      src="${preview}"
-      data-source="${original}"
-      alt="${description}"
+      src="${image.preview}"
+      data-source="${image.original}"
+      alt="${image.description}"
     />
   </a>
-</li>`;
-}).join("");
+</li>`).join("");
 
 galleryContainer.innerHTML = galleryItems;
 
@@ -91,16 +90,14 @@ galleryContainer.addEventListener("click", event => {
 
     const largeImageUrl = event.target.dataset.source;
 
-    const instance = basicLightbox.create(`
-        <img src="${largeImageUrl}" width=800 height=600>
-        `);
+    const instance = basicLightbox.create(`<img src="${largeImageUrl}" width=800 height=600>`);
     
-    instance.show()
+    instance.show();
 
     })
 
     document.addEventListener("keydown", event => {
-        if (event.code === "Escape" && instance.visible()) {
+        if (event.key === "Escape" && instance.visible()) {
             instance.close();
         }
     });
