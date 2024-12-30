@@ -64,6 +64,7 @@ const images = [
   },
 ];
 
+
 const galleryContainer = document.querySelector(".gallery");
 
 const galleryItems = images.map((image) =>
@@ -78,29 +79,30 @@ const galleryItems = images.map((image) =>
   </a>
 </li>`).join("");
 
+
 galleryContainer.innerHTML = galleryItems;
 
 galleryContainer.addEventListener("click", event => {
     event.preventDefault();
+    isgalleryImage = event.target.classList.contains("gallery-image");
 
-    const isGalleryImage = event.target.classList.contains("gallery-image");
-    if (!isGalleryImage) {
+    if (!isgalleryImage) {
         return;
     }
 
     const largeImageUrl = event.target.dataset.source;
 
     const instance = basicLightbox.create(`<img src="${largeImageUrl}" width=800 height=600>`);
-    
+
     instance.show();
+})
 
-    })
 
-    document.addEventListener("keydown", event => {
-        if (event.key === "Escape" && instance.visible()) {
-            instance.close();
-        }
-    });
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && instance.visible()) {
+        instance.close();
+    }
+});
 
 
 
