@@ -64,10 +64,10 @@ const images = [
   },
 ];
 
-const galleryContainer = document.querySelector('.gallery');
+const galleryContainer = document.querySelector(".gallery");
 
-const galleryItems = images.map((image)) => {
-    return `<li class="gallery-item">
+const galleryItems = images.map((image) =>
+    `<li class="gallery-item">
   <a class="gallery-link" href="large-image.jpg">
     <img
       class="gallery-image"
