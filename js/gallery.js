@@ -84,7 +84,7 @@ galleryContainer.innerHTML = galleryItems;
 
 galleryContainer.addEventListener("click", event => {
     event.preventDefault();
-    isgalleryImage = event.target.classList.contains("gallery-image");
+    const isgalleryImage = event.target.classList.contains("gallery-image");
 
     if (!isgalleryImage) {
         return;
